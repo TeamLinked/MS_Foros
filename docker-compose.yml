@@ -1,0 +1,46 @@
+version: '2'
+
+services:
+  foros:
+    # image: teamlinked2019/backend_foros:v2.6
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+        - /code:/var/lib/foros
+    ports:
+        - "8000:8000"
+    depends_on:
+        - db
+        - migration
+    labels:
+        io.rancher.scheduler.global: 'true'
+  migration: 
+    #image: teamlinked2019/backend_foros:v2.6
+    build: .
+    command: bash -c "python manage.py makemigrations foros && python manage.py migrate"
+    volumes:
+      - /code:/var/lib/foros
+    depends_on:
+      - db
+    restart: "no"
+    labels:
+      io.rancher.scheduler.global: 'true'
+  db:
+    image: mysql
+    restart: on-failure
+    command: --default-authentication-plugin=mysql_native_password --mysqlx=0
+    environment:
+      - MYSQL_HOST=localhost
+      - MYSQL_PORT=3306 
+      - MYSQL_DATABASE=foros 
+      - MYSQL_USER=user 
+      - MYSQL_PASSWORD=password_123 
+      - MYSQL_ROOT_PASSWORD=password_123 
+    ports:
+      - "3307:3306"
+    volumes:
+      - "/db:/var/lib/mysql"
+    labels:
+      io.rancher.scheduler.global: "true"
+    
+  
