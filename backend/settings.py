@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -82,7 +83,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'USER': 'user',
         'PASSWORD': 'password_123',
-        'HOST': 'db',#'127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'HOST': 'db',
         'PORT': '3306',
         'NAME': 'foros',
     }
@@ -105,6 +106,40 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+CORS_ORIGIN_WHITELIST = [
+    "https://team-linked.com",
+    "http://localhost:8000",
+    "http://35.215.69.224:8000",
+    "http://35.235.64.211:8000",
+    "http://34.94.208.170:8000",
+    "http://35.236.27.232:8000",
+    "http://35.215.69.224:3050",
+    "http://35.235.64.211:3050",
+    "http://34.94.208.170:3050",
+    "http://35.236.27.232:3050"
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
 ]
 
 
