@@ -2,7 +2,7 @@ version: '2'
 
 services:
   foros:
-    # image: teamlinked2019/backend_foros:v2.6
+    # image: teamlinked2019/backend_foros:v2.7
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
@@ -15,7 +15,7 @@ services:
     labels:
         io.rancher.scheduler.global: 'true'
   migration: 
-    #image: teamlinked2019/backend_foros:v2.6
+    #image: teamlinked2019/backend_foros:v2.7
     build: .
     command: bash -c "python manage.py makemigrations foros && python manage.py migrate"
     volumes:
