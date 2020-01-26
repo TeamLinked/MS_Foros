@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
+        'ENGINE': 'django.db.backends.mysql',
         'USER': 'user',
         'PASSWORD': 'password_123',
         'HOST': 'db',
@@ -109,16 +109,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    "https://team-linked.com",
-    "http://localhost:8000",
-    "http://35.215.69.224:8000",
-    "http://35.235.64.211:8000",
-    "http://34.94.208.170:8000",
-    "http://35.236.27.232:8000",
-    "http://35.215.69.224:3050",
-    "http://35.235.64.211:3050",
-    "http://34.94.208.170:3050",
-    "http://35.236.27.232:3050"
+    "http://team-linked.com",
+    "http://34.94.208.170:3051"
 ]
 
 CORS_ALLOW_METHODS = [
